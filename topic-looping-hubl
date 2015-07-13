@@ -1,0 +1,35 @@
+<div class="blog-section">
+    <div class="blog-listing-wrapper cell-wrapper">
+        <div class="post-listing{% if simple_list_page %}-simple{% endif %}">
+        {% for topic in contents_topics %}
+        {% set this_topic = topic %}
+        {% set topic_index = 0 %}
+        <div class="topic-groups">
+            <h2 class="custom-topic">{{ topic.name }}</h2>
+            {% for content in contents %}
+            {% if this_topic in content.topic_list %}
+            {% if topic_index < 1 %}
+            <div id="custom-post-item" class="custom-post-item">
+                <div class="custom-post-body">
+                    {% if content.post_list_summary_featured_image %}
+                        <div class="custom-hs-featured-image-wrapper" style="background-image:url('{{ content.post_list_summary_featured_image }}');">
+                            <h2><a href="{{content.absolute_url}}">{{ content.name }}</a></h2>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% set topic_index = topic_index + 1 %}
+            {% else %}
+            <div id="custom-post-item" class="custom-post-item not-featured">
+                <hr />
+                    <h2><a href="{{content.absolute_url}}" style="color: #354458;">{{ content.name }}</a></h2>
+                <hr />
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endfor %} {# ending the post list #}
+        </div>
+        {# ending the topic loop index #}{% endfor %}
+        </div>
+    </div>
+</div>
