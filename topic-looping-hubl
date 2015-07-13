@@ -11,11 +11,10 @@
             {% if topic_index < 1 %}
             <div id="custom-post-item" class="custom-post-item">
                 <div class="custom-post-body">
-                    {% if content.post_list_summary_featured_image %}
-                        <div class="custom-hs-featured-image-wrapper" style="background-image:url('{{ content.post_list_summary_featured_image }}');">
-                            <h2><a href="{{content.absolute_url}}">{{ content.name }}</a></h2>
-                        </div>
-                    {% endif %}
+                    <div class="custom-hs-featured-image-wrapper" {% if content.post_list_summary_featured_image %} style="background-image:url('{{ content.post_list_summary_featured_image }}');" 
+                    {% endif %}>
+                    <h2><a href="{{content.absolute_url}}">{{ content.name }}</a></h2>
+                    </div>
                 </div>
             </div>
             {% set topic_index = topic_index + 1 %}
